@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Get Mouse Postion</title>
+    <style>
+      body {
+        background-color: #222;
+      }
+
+      #position {
+        color: #666;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 50px;
+        font-family: 500;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: 0;
+        transform: translate(-50%, -50%)
+      }
+    </style>
+  <body>
+    <p id="position" style="-moz-user-select: none; -webkit-user-select: none; -ms-user-select:none; user-select:none;-o-user-select:none;" 
+    unselectable="on"
+    onselectstart="return false;" 
+    onmousedown="return false;">x:? y:?</p>
+    <script>
+      const position = document.querySelector("#position");
+
+      document.addEventListener("click", (event) => {
+        navigator.clipboard.writeText(`x:${event.clientX} y:${event.clientY}`);
+        position.textContent = `x:${event.clientX} y:${event.clientY}`
+      });
+    </script>
+  </body>
+</html>
